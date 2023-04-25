@@ -4,14 +4,23 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const users = [
+        { username: 'user1', password: 'pass1' },
+        { username: 'user2', password: 'pass2' },
+        { username: 'user3', password: 'pass3' },
+        { username: 'user4', password: 'pass4' },
+        { username: 'user5', password: 'pass5' },
+      ];
     const history = useHistory();
     const loginHandler = (e) =>{
-        if (username === 'admin' && password === 'password'){
-            history.push('./page')
+        
+        const userMatch = users.filter(user=>user.username === username && user.password === password);
+        if (userMatch.length>0){
+            alert("Login Successfull!!")
+            history.replace('./list');
         }
         else{
-            alert('Invalid credentials!!')
-
+            alert("Invalid Credential");
         }
     }
 
